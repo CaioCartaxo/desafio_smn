@@ -1,0 +1,81 @@
+{% extends 'painel/user/base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style type="text/css">
+    body {
+
+      font-family: 'Roboto', sans-serif;
+    }
+    </style>
+  <style media="screen">
+    a:link {
+        text-decoration: none;
+    }
+
+    h6 {
+        text-align: center;
+    }
+
+    .alert-primary {
+        background-color: #d3d5d6;
+        border-color: #707070;
+    }
+
+    .btn-primary {
+        background-color: #15a900;
+        border-color: #15a900;
+    }
+
+    .panel-heading {
+        background: -webkit-linear-gradient(left, #898989, #424242);
+    }
+
+    .panel-primary {
+        border-color: #000000;
+    }
+
+    .row {
+        margin: 100px;
+    }
+  </style>
+</head>
+<div class="container">
+    <div class="row" >
+        <div class="alert alert-primary" role="alert">
+            Para concluir uma atividade, apenas clique ou toque no ícone <td><a class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-time"></span></a></td>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h6 class="panel-title">Lista de suas tarefas</h6>
+            </div>
+            <table class="table table-hover" id="dev-table">
+                <thead>
+                    <tr>
+                        <th>Tarefa</th>
+                        <th>De</th>
+                        <th>Prazo</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                {% for t in list %}
+                <tr>
+                    <td>{{t.message}}</td>
+                    <td>{{t.created_by}}</td>
+                    <td>{{t.end_at}}</td>
+                    {% if t.done %}
+                        <td><a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok"></span></a></td>
+                    {% else %}
+                        <td><a class="btn btn-warning btn-xs" href="{% url 'task-done-view' t.id %}"><span class="glyphicon glyphicon-time"></span></a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

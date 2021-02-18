@@ -1,0 +1,111 @@
+{% extends 'painel/manager/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style type="text/css">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .form-content {
+      padding: 30px 0;
+      background-color: #ffffff;
+    }
+
+    .btn-primary {
+        background-color: #313131;
+        border-color: #313131;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #898989, #424242);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #313131;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <div class="container register-form">
+      <div class="actions">
+        <a class="btn grey-cascade btn-circle" href="{% url 'manager-upload-avatar-view' %}">
+          <button type="button" class="btn btn-primary"> Alterar foto </button>
+        </a>
+      </div>
+      <div class="form">
+        <div class="note">
+          <p>Atualizar informações pessoais</p>
+        </div>
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                Primeiro nome
+                {% render_field form1.first_name class="form-control" placeholder="Primeiro nome" %}
+              </div>
+              <div class="form-group">
+                Último nome
+                {% render_field form1.last_name class="form-control" placeholder="Último nome" %}
+              </div>
+              <div class="form-group">
+                Usuário
+                {% render_field form1.username class="form-control" placeholder="Usuário" %}
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                Telefone
+                {% render_field form2.phone class="form-control" placeholder="(00)00000-0000" %}
+              </div>
+              <div class="form-group">
+                Celular
+                {% render_field form2.mobile class="form-control" placeholder="(00)00000-0000" %}
+              </div>
+              <div class="form-group">
+                Endereço
+                {% render_field form2.address class="form-control" placeholder="Rua exemplo, n 0" %}
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btnSubmit">Atualizar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
+{% endblock content %}

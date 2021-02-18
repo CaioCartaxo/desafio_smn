@@ -1,0 +1,84 @@
+{% extends 'painel/user/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style type="text/css">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .form-content {
+      padding: 30px 0;
+      background-color: #ffffff;
+    }
+
+    .btn-primary {
+        background-color: #313131;
+        border-color: #313131;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #898989, #424242);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .note2 {
+      height: 80px;
+      background: #ffffff;
+      color: #ffffff;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #313131;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="note">
+            <p>Selecione a foto desejada e aperte em enviar</p>
+        </div>
+        <br>
+        <center>
+            <div class="note2">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="userimg" id="userimg" accept="image/png, image/jpeg">
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </center>
+    </div>
+</body>
+
+{% endblock content %}
