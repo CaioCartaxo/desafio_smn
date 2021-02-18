@@ -1,0 +1,73 @@
+{% extends 'painel/manager/base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style type="text/css">
+    body {
+
+      font-family: 'Roboto', sans-serif;
+    }
+    </style>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #313131;
+        border-color: #313131;
+    }
+
+    .panel-heading {
+      background: -webkit-linear-gradient(left, #898989, #424242);
+    }
+
+    .panel-primary {
+      border-color: #000000;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+    <div class="row" >
+        <div class="actions">
+            <a class="btn grey-cascade btn-circle" href="{% url 'new-user-view' %}">
+                <button type="button" class="btn btn-primary"> Novo usuario </button>
+            </a>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h6 class="panel-title">Lista de usuarios cadastrados</h6>
+            </div>
+            <table class="table table-hover" id="dev-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>E-mail</th>
+                        </tr>
+                </thead>
+                {% for t in list %}
+                <tr>
+                    <td>{{t.first_name}}</td>
+                    <td>{{t.last_name}}</td>
+                    <td>{{t.email}}</td>
+                </tr>
+                {% endfor %}
+			</table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

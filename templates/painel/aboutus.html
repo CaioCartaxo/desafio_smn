@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pastelaria</title>
+    <style media="screen">
+      .jumbotron {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      .jumbotron h1 {
+        text-align: center;
+      }
+
+      .alert {
+        margin: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include "painel/navbar.html" %}
+    <br><br>
+    <center>
+      <h3 class='alert alert-success' style="margin-bottom:0px;">Sobre nós!</h3>
+    </center>
+    <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
+      <h1 class="display-4">Pastelaria</h1>
+      <p class="lead">Somos uma pastelaria disposta a entregar o melhor pastel da cidade, venha conferir nossos sabores!</p>
+      <hr class="my-4">
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/" role="button">INICIO</a>
+      </p>
+    </div>
+    {% include "painel/footer.html" %}
+  </body>
+
+</html>
